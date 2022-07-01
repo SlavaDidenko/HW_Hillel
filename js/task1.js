@@ -1,7 +1,11 @@
-const userName = prompt("Enter your name:");
-const userPassword = prompt("Enter your password:");
-if (userName === "admin" && userPassword === "qWeRty123") {
-  alert("Access granted");
+const x = parseInt(prompt("Введіть ціле число Х:"));
+const y = parseInt(prompt("Введіть ціле число Y:"));
+let arr = [];
+if (isNaN(x) || isNaN(y)) {
+  alert(`Ну я ж казав число...`)
 } else {
-  alert("Oops");
+  for (let i = x; i <= y; i++ ){
+  arr.push(i);
+}
+alert(`Х= ${x} Y=${y}, числа від Х до Y: ${arr}`);
 }
