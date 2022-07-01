@@ -1,26 +1,14 @@
-let userAge = Number(prompt("Введіть ваш вік:"));
-let age = userAge % 100;
+const lengthArr = parseInt(prompt("Введіть розмір масиву:"));
+let arr = [];
+let summ = 0;
+if (isNaN(lengthArr)) {
 
-if (isNaN(userAge)) {
-  alert(`У цифрах...`)
-}
-else {
-  if (age >= 5 && age <= 20) {
-    alert("Вам " + userAge + " Років");
+}else {
+  for (i = 0; i < lengthArr; i++) {
+    let random = Math.floor(Math.random() * 100) + 1;
+    Number(arr.push(random));
+    summ = summ + arr[i];
   }
-  else {
-    age = age % 10;
-
-    if (age === 1) {
-      alert("Вам " + userAge + " Рік");
-    }
-
-    if (age >= 2 && age <= 4) {
-      alert(`Вам ${userAge} Роки`);
-    }
-    
-    if (age === 0) {
-      alert("Вам " + userAge + " Років");
-    }
-  }
+  summ = parseInt(summ / lengthArr); // я заокруглив, щоб ,було красивіше
+  alert(`Масив :${arr} та середнє арифметичне - ${summ} `);
 }

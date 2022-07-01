@@ -1,38 +1,45 @@
-let first = Number(prompt("Введіть початкову позицію коня(у цифрах) по Y:"));
-let second = Number(prompt("Введіть початкову позицію коня(у цифрах) по X:"));
-if (isNaN(first) || isNaN(second)) {
-  alert(`Ну я ж казав у цифрах...`)
-}
-else {
-  if (first > 0 && first <= 8 && second > 0 && second <= 8) {
-    let nextFirst = Number(prompt("Введіть наступну позицію коня(у цифрах) по Y:"));
-    let nextSecond = Number(prompt("Введіть наступну позицію коня(у цифрах) по X:"));
-    const progressCheck1 = first == nextFirst - 2 && second == nextSecond + 1;
-    const progressCheck2 = first == nextFirst - 2 && second == nextSecond - 1;
-    const progressCheck3 = first == nextFirst + 2 && second == nextSecond - 1;
-    const progressCheck4 = first == nextFirst + 2 && second == nextSecond + 1;
-    const progressCheck5 = first == nextFirst - 1 && second == nextSecond - 2;
-    const progressCheck6 = first == nextFirst - 1 && second == nextSecond + 2;
-    const progressCheck7 = first == nextFirst + 1 && second == nextSecond - 2;
-    const progressCheck8 = first == nextFirst + 1 && second == nextSecond + 2;
-    if (isNaN(nextFirst) || isNaN(nextSecond)) {
-      alert(`Ну я ж казав у цифрах...`)
-    }
-    else
-    {
-      if ((
-        nextFirst > 0 &&
-        nextFirst <= 8 &&
-        nextSecond > 0 &&
-        nextSecond <= 8) &&
-        ( progressCheck1 || progressCheck2 || progressCheck3 || progressCheck4 ||
-          progressCheck5 || progressCheck6 || progressCheck7 || progressCheck8
-        )) {
-        alert(true);
-        (first = nextFirst), (second = nextSecond);
-      } else {
-        alert(false );
-        }
-    }
+function shift (array) {
+  let arrLength = array.length;
+  for (i = 0; i < arrLength; i++) {
+    array[i] = array[i + 1];
   }
+  array.length -= 1;
+  return array;
 }
+
+function pop(array) {
+  array.length -= 1;
+  return array;
+}
+
+
+function unshift(array, rest) {
+  const argulength = rest.length;
+  const arrLength = array.length;
+  for (i = arrLength; i >= 0; i--) {
+    array[i + argulength - 1] = array[i - 1]
+  }
+  for (i = 0; i < argulength; i++) {
+    array[i] = rest[i];
+  }
+  return array;
+};
+
+
+function push(array, rest) {
+  let argLength = rest.length;
+  let arrLength = array.length;
+  for (i = 0; i < argLength; i++) {
+    console.log(array)
+    array[arrLength + i] = rest[i];
+  }
+  return array;
+};
+
+
+num = [55, 24];
+arr = [2, 0, 2, 3, 5];
+console.log(shift(arr));
+console.log(pop(arr));
+console.log(unshift(arr, num));
+console.log(push(arr, num));
