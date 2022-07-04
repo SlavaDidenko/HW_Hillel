@@ -19,5 +19,4 @@ for (i = 0; i < row; i++) {
   str += '|' + arr[i].join(' ') + '|\n';
 }
 console.log(str)
-console.log(Array.from(arrNumbers).join(' ')); //не знаю як його вивести красиво на екран, тому вивів в консоль
-// console.log(arr);
+console.log(Array.from(arrNumbers).join(' ')); 
