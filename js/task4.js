@@ -13,7 +13,7 @@ function pop(array) {
 }
 
 
-function unshift(array, rest) {
+function unshift(array, ...rest) {
   const argulength = rest.length;
   const arrLength = array.length;
   for (i = arrLength; i >= 0; i--) {
@@ -26,11 +26,10 @@ function unshift(array, rest) {
 };
 
 
-function push(array, rest) {
+function push(array, ...rest) {
   let argLength = rest.length;
   let arrLength = array.length;
   for (i = 0; i < argLength; i++) {
-    console.log(array)
     array[arrLength + i] = rest[i];
   }
   return array;
@@ -39,7 +38,7 @@ function push(array, rest) {
 
 num = [55, 24];
 arr = [2, 0, 2, 3, 5];
-console.log(shift(arr));
-console.log(pop(arr));
-console.log(unshift(arr, num));
-console.log(push(arr, num));
+// console.log(shift(arr));
+// console.log(pop(arr));
+// console.log(unshift(arr, 1));
+// console.log(push(arr, 123));
