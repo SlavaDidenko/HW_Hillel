@@ -1,14 +1,8 @@
-const lengthArr = parseInt(prompt("Введіть розмір масиву:"));
-let arr = [];
-let summ = 0;
-if (isNaN(lengthArr)) {
-
-}else {
-  for (i = 0; i < lengthArr; i++) {
-    let random = Math.floor(Math.random() * 100) + 1;
-    Number(arr.push(random));
-    summ = summ + arr[i];
+function pow(x, n) {
+  if (n === 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
   }
-  summ = parseInt(summ / lengthArr); // я заокруглив, щоб ,було красивіше
-  alert(`Масив :${arr} та середнє арифметичне - ${summ} `);
 }
+console.log(pow(3, 3));
