@@ -9,84 +9,540 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header ">
-            <div class="container ">
-                <div class="header__wrapper">
-                    <a href="index.html" class ="header__logo">
-                        Gamix-<span>G</span>
-                    </a>
-                    <div class="header__menu-wrapper">
-                        <button class="header__close-btn"><span></span></button>
-                        <nav class="header__nav">
-                            <ul class="header__nav-list">
-                                <li class="header__nav-item"><a class="header__nav-link" href="#">Home</a></li>
-                                <li class="header__nav-item"><a class="header__nav-link" href="#">Games</a></li>
-                                <li class="header__nav-item"><a class="header__nav-link" href="#">About</a></li>
-                                <li class="header__nav-item"><a class="header__nav-link" href="#">Contact</a></li>
-                            </ul>
-                        </nav>
-                        <a class="header__btn btn-started" href="#">Get Started</a>
+    <div class="popup">
+        <div class="popup__window">
+            <button class="popup__close-bth"></button>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <div class="container">
+            <header class="header ">
+                    <div class="header-wrapper">
+                        <a href="index.html">
+                            <img class="header-logo" src="https://xl-static.rozetka.com.ua/assets/img/design/logo_invert.svg" alt="logo">
+                        </a>
+                        <div class="header-info">
+                            <p class="header-tell">
+                                Консультації по телефону: <a href="tel:+380445370222"> +38 044 537 02 22 </a>
+                            </p>
+                            <a class="header-btn" href="#">Графік роботи call-центру </a>
+                        </div>
                     </div>
-                    <button class="header__burger"></button>
-                </div>
-            </div>
-        </header>
-        <main class="main"> 
-            <section class="main-page">
-                    <div class="container">
-                        <div class="main-page__wrapper">
-                            <div class="main-page__text-content">
-                                <p class="main-page__suptitle suptitle">Game Tournament Here</p>
-                                <h1 class="main-page__title title">New <span class="main-page__title--red">Games</span> That You <span class="main-page__title--white">Enjoy</span></h1>
-                                <p class="main-page__text text">Gaming and Sports Template that is designed to build modern Online Game, Gaming News Portal, Gaming Online News Portal, and other News services websites and it is suitable for any kind of small business activity.</p>
-                                <div class="main-page__wrapper-btns">
-                                    <a href="#" class="main-page__started-btn btn-started">Get Started for Free</a>
-                                    <a class="main-page__watch-btn" href="#">Watch Trailer</a>
+            </header>
+            <main class="main"> 
+                <h1 class="title">Оформлення замовлення</h1>
+                    <div class="wrapper">
+                        <form action="POST" id="rozetka">
+                            <fieldset name="userContact">
+                                <legend class="legent"><span class="legent-number">1</span> Ваші контактні дані</legend>
+                                <div class="inputs-row">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputSurname">Прізвище</label>
+                                        <input id="inputSurname" class="input-contact" name="surname" type="text">
+                                            <p class="error cirilic-error invisible">
+                                                Введіть своє прізвище кирилицею
+                                            </p>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputName">Ім'я</label>
+                                        <input id="inputName" class="input-contact name" name="name" type="text">
+                                        <p class="error cirilic-error invisible">
+                                            Введіть своє ім'я кирилицею 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="inputs-row">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputTell">Мобільний телефон</label>
+                                        <input id="inputTell" class="input-contact" name="tell" placeholder="+380" type="tell"> 
+                                        <p class="error cirilic-error invisible">
+                                            Введіть номер мобільного телефону 
+                                        </p>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputEmail">Електронна пошта</label>
+                                        <input id="inputEmail" class="input-contact" name="email" type="email">
+                                        <p class="error cirilic-error invisible">
+                                            Заповніть поле
+                                        </p>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="order-wrapper">
+                                <h2 class="orser-title">Замовлення №1</h2>
+                                <p class="order-price"> на суму:  <span>25 389</span>$</p>
+                            </div>
+                            <fieldset name="detail">
+                                <div class="poduct-header-wrapper">
+                                    <legend class="poduct-legend"><span class="legent-number">1</span>Товари продавця Rozetka</legend>
+                                    <a class="btn" href="#">Редагувати</a>
+                                </div>
+                                <div class="poduct-main-list">
+                                    <div class="poduct-main-coll">
+                                        <a class="product-link" href="#"></a>
+                                        <ul class="poduct-list">
+                                            <a href="#">
+                                            <li class="poduct-img">
+                                                <img src="https://content1.rozetka.com.ua/goods/images/preview/191447829.jpg" alt="product">
+                                            </li>
+                                        </a>
+                                            <li class="poduct-title">
+                                                <a href="#">Asus PCI-Ex GeForce RTX 3060 ROG Strix Gaming OC V2 LHR 12GB GDDR6 (192bit) (1882/15000) (2 x HDMI, 3 x DisplayPort) (ROG-STRIX-RTX3060-O12G-V2-GAMING)</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="poduct-coll">
+                                        <ul class="poduct-info-list">
+                                            <li class="product-coll">
+                                                <p class="poduct-info-title">Ціна</p>
+                                                <p class="poduct-info-text">25 389 ₴</p>
+                                            </li>
+                                            <li class="product-coll">
+                                                <p class="poduct-info-title">Кількість</p>
+                                                <p class="poduct-info-text">1</p>
+                                            </li>
+                                            <li class="product-coll">
+                                                <p class="poduct-info-title">Сума</p>
+                                                <p class="poduct-info-text">25 389 ₴</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset name="delivery">
+                                <legend class="legent"><span class="legent-number">2</span>Доставка </legend>
+                                <button type="button" class="delivery-btn">
+                                    <span class="delivery-row">
+                                        <img class="location-picture" src="./img/location-pin.svg">
+                                        <span class="delivery-city-wrapper">
+                                            <span class=" delivery-label"> Ваше місто </span>
+                                            <span class="delivery-city"> Дніпро </span>
+                                            <span class=" delivery-label"> Дніпропетровська обл. </span>
+                                        </span>
+                                        <img class="arrow-picture" src="./img/arrow-right.svg">
+                                    </span>
+                                </button>
+                                <ul class="type-delivery-list">
+                                    <li class="delivery-type">
+                                        <div class="variant-inner checkout-variant__inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input checked class="input-radio" name="nameRadio" id="inputRadio" type="radio">
+                                                <label class="label-input-radio" value="1" for="inputRadio">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Самовивіз з наших магазинів</span>
+                                                        <span class="variant-price delivery-price"><span>Безкоштовно</span></span>
+                                                    </span>
+                                                </label>
+                                                <div class="checkout-variant__content checkout-variant__content__active">
+                                                    <div class="select">
+                                                        <button type="button" class="select__btn"></button>
+                                                        <div class="select__wrapper">
+                                                            <input placeholder="Введіть адресу або номер відділення" type="text" name="inputSearch" id="inputSearch">
+                                                            <ul class="select__list">
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№1, вул. Пирогівський шлях, 135</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№1, вул. Миколи Юнкерова, 29а (Київ)</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№2, вул. Бережанська, 9 (Оболонь Лугова)</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№3, вул. Калачівська, 13 (Стара Дарниця)</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№4, вул. Верховинна, 69</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№5, вул. Федорова, 32 (м. Олімпійська)</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№6, вул. Миколи Василенка, 2 (метро Берестейська)</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№7, вул. Гната Хоткевича, 8 (м.Чернігівська)</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№8, вул. Набережно-Хрещатицька, 33</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№9, пров. В'ячеслава Чорновола, 54а (р-н Жулянського мосту)</p>
+                                                                </li>
+                                                                <li class="select__item">
+                                                                    <p class="select__item-text">№10, вул. Василя Жуковського, 22А</p>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="delivery-row">
+                                                        <div class="work-schedule">
+                                                            
+                                                        </div>
+                                                        <button type="button" class="map-btn">
+                                                            <span class="bg-map"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>      
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input class="input-radio" name="nameRadio" id="inputRadio2" type="radio">
+                                                <label class="label-input-radio" value="2" for="inputRadio2">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Кур'єр на вашу адресу</span>
+                                                        <span class="delivery-price"><span>98</span> $</span>
+                                                    </span>
+                                                </label>
+                                                <div class="checkout-variant__content">
+                                                    <div class="form-row">
+                                                        <div class="form-coll">
+                                                            <label class="label" for="inputStreet">Вулиця</label>
+                                                            <input class="raise-floor" type="text" name="street" id="inputStreet">
+                                                        </div>
+                                                        <div class="form-coll row">
+                                                            <div class="form-delivery-wrapper">
+                                                                <label class="label " for="inputHouse">Будинок</label>
+                                                                <input class="raise-floor" type="text" name="house" id="inputHouse">
+                                                            </div>
+                                                            <div class="form-delivery-wrapper">
+                                                                <label class="label" for="inputFlat">Квартира</label>
+                                                                <input type="text" name="flat" id="inputFlat">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-coll">
+                                                            <label class="label" for="inputFloor">Поверх</label>
+                                                            <input class="raise-floor" type="text" name="floor" id="inputFloor">
+                                                        </div>
+                                                        <div class="form-coll row">
+                                                            <div class="form-delivery-wrapper">
+                                                                <label class="label" for="selectElevator">Ліфт</label>
+                                                                <select class="select-css" name="elevator" id="selectElevator">
+                                                                    <option selected disabled="true" value="null">Наявність вантажного ліфта</option>
+                                                                    <option value="none"> Відсутній </option>
+                                                                    <option value="yes"> Присутній </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <input disabled type="checkbox" name="checkboxFloor" id="checkboxFloor">
+                                                        <label class="label-input-checkbox" for="checkboxFloor">Підняти на поверх</label>
+                                                    </div>
+                                                    <p class="form-text"> Виберіть зручний для вас час доставки кур’єром і ми зможемо обробити ваше замовлення
+                                                        швидше </p>
+                                                    <div class="delivery-interval">
+                                                        <div class="delivery-interval__coll">
+                                                            <span class="delivery-interval__day">завтра</span>
+                                                            <span class="delivery-interval__wrapper">
+                                                                <input class="input-radio-day" name="inputRadioDay" id="inputRadioDay" type="radio">
+                                                                <label class="delivery-interval__time" for="inputRadioDay">11:00-21:00</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="delivery-interval__coll">
+                                                            <span class="delivery-interval__day">30 липня</span>
+                                                            <span class="delivery-interval__wrapper">
+                                                                <input class="input-radio-day" name="inputRadioDay" id="inputRadioDay2" type="radio">
+                                                                <label class="delivery-interval__time" for="inputRadioDay2">11:00-21:00</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="delivery-interval__coll">
+                                                            <span class="delivery-interval__day">31 липня</span>
+                                                            <span class="delivery-interval__wrapper">
+                                                                <input class="input-radio-day" name="inputRadioDay" id="inputRadioDay3" type="radio">
+                                                                <label class="delivery-interval__time" for="inputRadioDay3">11:00-21:00</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="delivery-interval__coll">
+                                                            <span class="delivery-interval__day">1 серпня</span>
+                                                            <span class="delivery-interval__wrapper">
+                                                                <input class="input-radio-day" name="inputRadioDay" id="inputRadioDay4" type="radio">
+                                                                <label class="delivery-interval__time" for="inputRadioDay4">11:00-19:00</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="delivery-interval__coll">
+                                                            <span class="delivery-interval__day">2 серпня</span>
+                                                            <span class="delivery-interval__wrapper">
+                                                                <input class="input-radio-day" name="inputRadioDay" id="inputRadioDay5" type="radio">
+                                                                <label class="delivery-interval__time" for="inputRadioDay5">11:00-21:00</label>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner ">
+                                            <div class="delivery-type__wrapper">
+                                                <input class="input-radio" name="nameRadio" id="inputRadio3" type="radio">
+                                                <label class="label-input-radio" value="4" for="inputRadio3">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Самовивіз з Нової Пошти</span>
+                                                        <span class="delivery-price"><span>75</span> $</span>
+                                                    </span>
+                                                </label>
+                                                <div class="checkout-variant__content">
+                                                    <div class="select">
+                                                        <button type="button" class="select__btn"></button>
+                                                        <div class="select__wrapper">
+                                                            <input placeholder="Введіть адресу або номер відділення" type="text" name="inputSearch" id="inputSearch">
+                                                            <ul class="select__list">
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№1, вул. Пирогівський шлях, 135</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№1, вул. Миколи Юнкерова, 29а (Київ)</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№2, вул. Бережанська, 9 (Оболонь Лугова)</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№3, вул. Калачівська, 13 (Стара Дарниця)</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№4, вул. Верховинна, 69</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№5, вул. Федорова, 32 (м. Олімпійська)</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№6, вул. Миколи Василенка, 2 (метро Берестейська)</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№7, вул. Гната Хоткевича, 8 (м.Чернігівська)</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№8, вул. Набережно-Хрещатицька, 33</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№9, пров. В'ячеслава Чорновола, 54а (р-н Жулянського мосту)</p>
+                                                                </li>
+                                                                <li class="select__item2">
+                                                                    <p class="select__item-text">№10, вул. Василя Жуковського, 22А</p>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="delivery-row">
+                                                        <div class="work-schedule">
+                                                            <span class="days">Пн - Пт :</span>
+                                                            <span class="time">09:00-19:00</span>
+                                                            <span class="days">Сб :</span>
+                                                            <span class="time">09:00-18:00</span>
+                                                            <span class="days">Нд :</span>
+                                                            <span class="time">10:00-18:00</span>
+                                                        </div>
+                                                        <button type="button" class="map-btn">
+                                                            <span class="bg-map"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input class="input-radio" name="nameRadio" id="inputRadio4" type="radio">
+                                                <label class="label-input-radio" value="1" for="inputRadio4">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Кур’єр Meest</span>
+                                                        <span class="delivery-price"><span>110</span> $</span>
+                                                    </span>
+                                                </label>
+                                                <div class="checkout-variant__content">
+                                                    <div class="form-row meest">
+                                                        <div class="form-coll">
+                                                            <label class="label" for="inputStreet2">Вулиця</label>
+                                                            <input class="raise-floor" type="text" name="street" id="inputStreet2">
+                                                        </div>
+                                                        <div class="form-coll row">
+                                                            <div class="form-delivery-wrapper">
+                                                                <label class="label " for="inputHous2e">Будинок</label>
+                                                                <input class="raise-floor" type="text" name="house" id="inputHouse2">
+                                                            </div>
+                                                            <div class="form-delivery-wrapper">
+                                                                <label class="label" for="inputFlat2">Квартира</label>
+                                                                <input type="text" name="flat" id="inputFlat2">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>      
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset name="payment">
+                                <legend class="legent"><span class="legent-number">3</span>Оплата</legend>
+                                <ul class="type-delivery-list">
+                                    <li class="delivery-type">
+                                        <div class="variant-inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input checked class="input-radio2" name="paymentRadio" id="paymentRadio" type="radio">
+                                                <label class="label-input-radio" value="1" for="paymentRadio">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Самовивіз з наших магазинів</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input class="input-radio2" name="paymentRadio" id="paymentRadio2" type="radio">
+                                                <label class="label-input-radio" value="2" for="paymentRadio2">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Оплатити зараз</span>
+                                                    </span>
+                                                </label>
+                                                <ul class="checkout-variant__content checkout-variant__list ">
+                                                    <li class="checkout-variant__item">
+                                                        <input class="input-radio" name="variant__card" id="variantCard" type="radio">
+                                                        <label class="label-input-radio" value="1" for="variant__card">
+                                                            Додати картку
+                                                        </label>
+                                                        <div class="checkout-variant__card">
+
+                                                        </div>
+                                                    </li>
+                                                    <li class="checkout-variant__item"></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner ">
+                                            <div class="delivery-type__wrapper">
+                                                <input class="input-radio2" name="paymentRadio" id="paymentRadio3" type="radio">
+                                                <label class="label-input-radio" value="3" for="paymentRadio3">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Безготівковими для юридичних осіб</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input class="input-radio2" name="paymentRadio" id="paymentRadio4" type="radio">
+                                                <label class="label-input-radio" value="4" for="paymentRadio4">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Безготівковими для фізичних осіб</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input class="input-radio2" name="paymentRadio" id="paymentRadio5" type="radio">
+                                                <label class="label-input-radio" value="5" for="paymentRadio5">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">PrivatPay</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="delivery-type">
+                                        <div class="variant-inner">
+                                            <div class="delivery-type__wrapper">
+                                                <input checked class="input-radio2" name="paymentRadio" id="paymentRadio6" type="radio">
+                                                <label class="label-input-radio" value="6" for="paymentRadio6">
+                                                    <span class="label-radio-row">
+                                                        <span class="variant-title">Кредит та оплата частинами</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset name="recieverContact">
+                                <legend class="legent"><span class="legent-number">4</span>Контактні дані отримувача замовлення</legend>
+                                <p class="warning">
+                                    Увага! Отримання замовлення за паспортом. Введіть прізвище, ім'я, по батькові та мобільний номер телефону отримувача замовлення
+                                </p>
+                                <div class="inputs-row">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputSurname2">Прізвище</label>
+                                        <input id="inputSurname2" class="input-contact" name="surname" type="text">
+                                            <p class="error cirilic-error invisible">
+                                                Введіть своє прізвище кирилицею
+                                            </p>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputName2">Ім'я</label>
+                                        <input id="inputName2" class="input-contact name" name="name" type="text">
+                                        <p class="error cirilic-error invisible">
+                                            Введіть своє ім'я кирилицею 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="inputs-row">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputTell2">Мобільний телефон</label>
+                                        <input id="inputTell2" class="input-contact" name="tell" placeholder="+380" type="tell"> 
+                                        <p class="error cirilic-error invisible">
+                                            Введіть номер мобільного телефону 
+                                        </p>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <label class="label" for="inputEmail2">Електронна пошта</label>
+                                        <input id="inputEmail2" class="input-contact" name="email" type="email">
+                                        <p class="error cirilic-error invisible">
+                                            Заповніть поле
+                                        </p>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <aside class="aside">
+                            <div class="promo-wrapper">
+                                <div class="promo">
+                                    <p class="promo-text">Промокод</p>
+                                    <button type="button" class="promo-add">Додати</button>
+                                </div>
+                                <div class="checkout-promo">
+                                    <input type="text" name="promo" id="promo">
+                                    <button class="checkout-promo__btn" type="button"> Застосувати </button>
                                 </div>
                             </div>
-                            <div class="main-page__img">
-                                <img src="./img/header/main-img.svg" alt="A man with a joystick">
-                            <div class="main-page__line"></div>
-                        </div>
-                        </div>
+                            <div class="total">
+                                <p class="total-title">Разом</p>
+                                <div class="total-row">
+                                    <p class="promo-text">1 товар на суму</p>
+                                    <p class="promo-price"><span id="price-product">25 389</span> ₴</p>
+                                </div>
+                                <div class="total-row">
+                                    <p class="promo-text">Вартість доставки</p>
+                                    <p class="promo-price"><span id="price-delivery" >Безкоштовно</span></p>
+                                </div>
+                                <div class="total-row row-final-price">
+                                    <p class="promo-text">До сплати</p>
+                                    <p class="promo-final-price"><span id="final-price">25 499</span> ₴</p>
+                                </div>
+                                <button type="submit" form="rozetka" class="total-btn">Замовлення підтверджую</button>
+                            </div> 
+                        </aside>
                     </div>
-            </section> 
-            <section class="about">
-                <div class="container">
-                    <div class="about__wrapper">
-                        <div class="about__img">
-                            <img src="./img/about/about-img.svg" alt="Hand with joystick">
-                            <div class="about__girl-img"></div>
-                        </div>
-                        <div class="about__text-content">
-                            <div class="about__suptitle suptitle">About Robot Games</div>
-                            <h2 class="about__title modify-title">Robots is an Interactive <span class="about__title--red modify-title__red">Card Games</span></h2>
-                            <p class="about__text text">Gaming and Sports Template that is designed to build modern Online Game, Gaming News Portal, Gaming Online News Portal, and other News services websites and it is suitable for any kind of small business activity.</p>
-                            <a class="about__btn-arrow btn-arrow" href="#">Explore More</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div class="container">
-                <form class="form">
-                    <div class="form__wrapper">
-                        <input class="form__input" type="text" name="input" >
-                        <button class="btn form__clear-btn">Clear</button>
-                    </div>
-                    <div class="btns">
-                        <button disabled class="btn form__previous-btn">Previous</button>
-                        <button disabled class="btn form__next-btn">Next</button>
-                        <button disabled class="btn form__parent-btn">Parent</button>
-                        <button disabled class="btn form__first-btn">First</button>
-                        <button disabled class="btn form__last-btn">Last</button>
-                    </div>
-                </form>
+            </main>
+            <footer class="footer">
+                <p class="footer__text">© 2001–2022 Інтернет-магазин «Розетка™» — Щоразу що треба</p>
+            </footer>
         </div>
-        </main>
-        <footer class="footer"></footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/imask"></script>
     <script type="text/javascript" src="./js/script.js"></script>
 </body>
 </html>
