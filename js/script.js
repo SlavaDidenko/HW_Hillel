@@ -1,29 +1,14 @@
-const cirillicPattern = /^[а-яА-Яії]+$/;
-
-const tell = document.getElementsByName('tell');
-const surname = document.getElementsByName('surname');
-const name = document.getElementsByName('name');
-const email = document.getElementsByName('email');
-const cirillicErr = document.getElementsByClassName('cirilic-error')
-const inputRadio = document.querySelectorAll('.input-radio');
-const checkboxFloor = document.getElementById('checkboxFloor');
-const inputStreet = document.getElementById('inputStreet');
-const inputHouse = document.getElementById('inputHouse');
 const inputFlat = document.getElementById('inputFlat');
-const inputFloor = document.getElementById('inputFloor');
+const inputHouse = document.getElementById('inputHouse');
+const inputStreet = document.getElementById('inputStreet');
+const checkboxFloor = document.getElementById('checkboxFloor');
 const raiseFloor = document.querySelectorAll('.raise-floor');
 
-
-///тут треба переробити!!!!!!!!!!!!!!!!!!!!
 raiseFloor.forEach(el => {
   el.addEventListener('input', function () {
-    console.log(inputStreet.value != '');
-    console.log(!inputStreet.classList.contains('eror-blur'))
     if (inputStreet.value != '' && !inputStreet.classList.contains('eror-blur') && inputHouse.value != '' && !inputHouse.classList.contains('eror-blur') && inputFloor.value != '' && !inputFloor.classList.contains('eror-blur')) {
-      console.log('1')
       setTimeout(() => { checkboxFloor.disabled = false }, 500)
     } else {
-      console.log('2')
       setTimeout(() => {checkboxFloor.disabled = true}, 500)
     }
   })
@@ -32,28 +17,53 @@ raiseFloor.forEach(el => {
 
 /////////////////////////////////////////////////////
 
+const inputRadio = document.querySelectorAll('.input-radio');
+console.log(inputRadio)
 inputRadio.forEach(input => {
   input.addEventListener('change', function () {
     if (this.checked) {
-      document.querySelector('.checkout-variant__inner')?.classList.remove('checkout-variant__inner');
-      document.querySelector('.checkout-variant__content__active')?.classList.remove('checkout-variant__content__active');
+      document.querySelectorAll('.checkout-variant__inner')[0]?.classList.remove('checkout-variant__inner');
+      document.querySelectorAll('.checkout-variant__content__active')[0]?.classList.remove('checkout-variant__content__active');
       this.parentNode.parentNode.classList.add('checkout-variant__inner')
       this.parentNode.lastElementChild.classList.add('checkout-variant__content__active')
 
-      // let priceDelivery = document.getElementById('price-delivery').textContent;
-      // let сhoiceDelivery = this.nextElementSibling.firstElementChild.lastElementChild.lastElementChild.textContent;
-      // let total = document.getElementById('final-price').textContent;
       const priceProduct = document.getElementById('price-product').textContent;
-      document.getElementById('price-delivery').textContent = this.nextElementSibling.querySelector('.delivery-price').textContent;
-      document.getElementById('final-price').textContent = Number(priceProduct.replace(/[^\d]/g, "")) + Number(document.getElementById('price-delivery').textContent.replace(/[^\d]/g, "")) ;
-      // console.log(total)
+      let priceDelivery = document.getElementById('price-delivery');
+      console.log(this.nextElementSibling.querySelector('.delivery-price').textContent)
+      priceDelivery.textContent = this.nextElementSibling.querySelector('.delivery-price').textContent;
+      document.getElementById('final-price').textContent = Number(priceProduct.replace(/[^\d]/g, "")) + Number(priceDelivery.textContent.replace(/[^\d]/g, ""));
+      console.log( Number('dsfsfsdf'))
+      document.getElementById('final-price').textContent = prettify(document.getElementById('final-price').textContent)
     }
   })
 })
 
-/////////////////////////////////////////////
+function prettify(num) {
+  let n = num.toString();
+  return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ');
+}
 
-function checkCirillicInput () {
+const inputRadio2 = document.querySelectorAll('.input-radio2');
+inputRadio2.forEach(input => {
+  input.addEventListener('change', function () {
+    if (this.checked) {
+      document.querySelectorAll('.checkout-variant__inner')[1]?.classList.remove('checkout-variant__inner');
+      document.querySelectorAll('.checkout-variant__content__active')[1]?.classList.remove('checkout-variant__content__active');
+      if (this.id === 'paymentRadio2') this.parentNode.parentNode.classList.add('checkout-variant__inner');
+      this.parentNode.lastElementChild.classList.add('checkout-variant__content__active')
+
+      
+    }
+  })
+})
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const surname = document.getElementsByName('surname');
+const name = document.getElementsByName('name');
+const middleName = document.getElementsByName('middleName');
+
+function checkCirillicInput() {
+  const cirillicPattern = /^[а-яА-Яії]+$/;
   if (!cirillicPattern.test(this.value)) {
     this.nextElementSibling.classList.remove('invisible');
     this.classList.add('eror-blur');
@@ -63,18 +73,126 @@ function checkCirillicInput () {
   }
 };
 
+
+surname.forEach(element => {
+  element.oninput = checkCirillicInput;
+  element.onblur = checkBlurEror;
+});
+name.forEach(element => {
+  element.oninput = checkCirillicInput;
+  element.onblur = checkBlurEror;
+});
+middleName.forEach(element => {
+  element.oninput = function () {
+      const cirillicPattern = /^[а-яА-Яії]+$/;
+    if (!cirillicPattern.test(this.value)) {
+      this.nextElementSibling.classList.remove('invisible');
+      this.classList.add('eror-blur');
+    } else {
+      this.nextElementSibling.classList.add('invisible');
+      this.classList.remove('eror-blur');
+    }
+    if ( this.value == '') {
+      this.classList.remove('eror-blur');
+      this.nextElementSibling.classList.add('invisible');
+    }
+  };
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const numberCard = document.getElementById('numberCard')
+numberCard.oninput = checkCard;
+
+function checkCard() {
+  if (this.value == '') {
+    this.style.borderColor = '#d2d2d2';
+  } else {
+    this.style.borderColor = '#ff4500';
+  }
+  this.value = this.value.replace(/[^\d ]/g, "");
+  if (this.value.length > 18) {
+    this.value = this.value.slice(0, 19);
+    this.style.borderColor = '#d2d2d2';
+  }
+}
+const dynamicMask4 = IMask(
+  numberCard,
+  {
+      mask: [
+          {
+              mask: '0000 0000 0000 0000'
+          },
+          {
+              mask: /^\S*@?\S*$/
+          }
+      ]
+  });
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const validityPeriod = document.getElementById('validityPeriod');
+  const validityPeriod2 = document.getElementById('validityPeriod2');
+  const cvv = document.getElementById('cvv');
+  
+  validityPeriod.oninput = checkValidity;
+  validityPeriod2.oninput = checkValidity2;
+  cvv.oninput = checkCVV;
+function checkValidity() {
+    this.value = this.value.replace(/[^\d ]/g, "");
+  
+    if (this.value.length > 1) {
+      this.value = this.value.slice(0, 2);
+      validityPeriod2.focus();
+    }
+  }
+  
+function checkCVV() {
+  if (this.value == '') {
+    this.style.borderColor = '#d2d2d2';
+  } else {
+    this.style.borderColor = '#ff4500';
+  }
+  this.value = this.value.replace(/[^\d ]/g, "");
+  if (this.value.length > 2) {
+    this.value = this.value.slice(0, 3);
+    this.style.borderColor = '#d2d2d2';
+  }
+  }
+  
+  
+  function checkValidity2() {
+    this.value = this.value.replace(/[^\d ]/g, "");
+  
+    if (this.value.length > 1) {
+      this.value = this.value.slice(0, 2);
+      cvv.focus();
+    }
+  }
+  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const tell = document.getElementsByName('tell');
+
 function checkNumbers() {
   let a = this.value.slice(4);
   this.nextElementSibling.classList.remove("invisible");
   a = a.replace(/[^\d ]/g, "");
-  if (a.length > 13) {
+  if (a.length > 12) {
     a = a.slice(0, 13);
     this.nextElementSibling.classList.add("invisible");
     this.classList.remove("eror-blur");
   }
   this.value = "+38 " + a;
 
-  const dynamicMask = IMask(
+}
+
+tell.forEach(element => {
+  element.value = "+38 ";
+  element.oninput = checkNumbers;
+  element.onblur = checkBlurEror;
+});
+
+const dynamicMask = IMask(
   tell[0],
   {
       mask: [
@@ -85,11 +203,46 @@ function checkNumbers() {
               mask: /^\S*@?\S*$/
           }
       ]
+    });
+const dynamicMask2 = IMask(
+  tell[1],
+  {
+      mask: [
+          {
+              mask: '+38 000 000 00 00'
+          },
+          {
+              mask: /^\S*@?\S*$/
+          }
+      ]
   });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const ngValid = document.getElementById('ng-valid');
+const legalEntity = document.getElementById('legal-entity');
+legalEntity.oninput = () => {
+  if ( legalEntity.value == '' ) {
+    legalEntity.nextElementSibling.classList.remove("invisible");
+    legalEntity.classList.add('eror-blur');
+  } else {
+    legalEntity.nextElementSibling.classList.add("invisible");
+    legalEntity.classList.remove('eror-blur');
+  }
+}
+ngValid.oninput = checkCode;
+function checkCode() {
+  this.classList.add('eror-blur');
+  this.nextElementSibling.classList.remove("invisible");
+
+  if (this.value.length == 8 &&  this.value == this.value.replace(/[^\d ]/g, "")) {
+    this.classList.remove('eror-blur');
+  this.nextElementSibling.classList.add("invisible");
+  }
 }
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const  inputStreet2 = document.getElementById('inputStreet2');
+const inputHouse2 = document.getElementById('inputHouse2');
 
 
 function checkBlurEror() {
@@ -97,6 +250,16 @@ function checkBlurEror() {
     this.classList.add('eror-blur');
   }
 }
+
+inputStreet2.onblur = checkBlurEror;
+inputHouse2.onblur = checkBlurEror;
+inputStreet.onblur = checkBlurEror;
+inputHouse.onblur = checkBlurEror;
+ngValid.onblur = checkBlurEror;
+legalEntity.onblur = checkBlurEror;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const email = document.getElementsByName('email');
+
 
 function checkEmail() {
   const regCheck = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -107,17 +270,13 @@ function checkEmail() {
   }
 }
 
+email.forEach(element => {
+  element.oninput = checkEmail;
+});
 
-const  inputStreet2 = document.getElementById('inputStreet2');
-const  inputHouse2 = document.getElementById('inputHouse2');
-const inputFlat2 = document.getElementById('inputFlat2');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inputStreet2.onblur = checkBlurEror;
-inputStreet2.oninput = checkStreet;
-inputHouse2.onblur = checkBlurEror;
-inputHouse2.oninput = checkHouse;
-inputFlat2.oninput = checkFlat;
-
+// const  inputStreet2 = document.getElementById('inputStreet2');. ///
 
 function checkStreet() {
   if (!/^[а-яА-Яії0-9 ]+$/.test(this.value)) {
@@ -127,6 +286,13 @@ function checkStreet() {
   }
 }  
 
+inputStreet2.oninput = checkStreet;
+inputStreet.oninput = checkStreet;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// const  inputHouse2 = document.getElementById('inputHouse2');///
+
 function checkHouse () {
   if (!/^[0-9 ]+$/.test(this.value)) {
     this.classList.add('eror-blur');
@@ -134,6 +300,13 @@ function checkHouse () {
     this.classList.remove('eror-blur');
   }
 }
+
+inputHouse2.oninput = checkHouse;
+inputHouse.oninput = checkHouse;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const inputFlat2 = document.getElementById('inputFlat2');
 
 function checkFlat() {
   if (!/^[а-яА-Яії0-9 ]+$/.test(this.value) || this.value.length > 5 ) {
@@ -145,7 +318,12 @@ function checkFlat() {
     this.classList.remove('eror-blur');
   }
 }
+inputFlat.oninput = checkFlat;
+inputFlat2.oninput = checkFlat;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const inputFloor = document.getElementById('inputFloor');
 function checkFloor() {
   if (!/^[0-9]+$/.test(this.value) || this.value.length > 2 ) {
     this.classList.add('eror-blur');
@@ -157,54 +335,34 @@ function checkFloor() {
   }
 }
 
-
-
-tell.forEach(element => {
-  element.value = "+38 ";
-  element.oninput = checkNumbers;
-  element.onblur = checkBlurEror;
-});
-surname.forEach(element => {
-  element.oninput = checkCirillicInput;
-  element.onblur = checkBlurEror;
-});
-name.forEach(element => {
-  element.oninput = checkCirillicInput;
-  element.onblur = checkBlurEror;
-});
-email.forEach(element => {
-  element.oninput = checkEmail;
-});
-
-inputStreet.onblur = checkBlurEror;
-inputStreet.oninput = checkStreet;
-inputHouse.onblur = checkBlurEror;
-inputHouse.oninput = checkHouse;
-inputFlat.oninput = checkFlat;
 inputFloor.oninput = checkFloor;
 
-////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 const allAddresses = document.querySelectorAll('.select__item');
 const allAddresses2 = document.querySelectorAll('.select__item2');
 const inputAddress = document.getElementsByName('inputSearch');
 const addressesWrapper = document.querySelectorAll('.select__list');
 const selectBtn = document.querySelectorAll('.select__btn');
 
-console.log(allAddresses.length)
-selectBtn.forEach(element => {
-  element.onclick = closeOpen;
-});
+
 
 function closeOpen (event) {
   event.preventDefault()
   const wrapper = this.nextElementSibling;
+  console.log(wrapper)
   wrapper.classList.toggle('select__wrapper--active');
-  wrapper.querySelector('input').focus();
+  wrapper.querySelector('input')?.focus();
 };
+
+selectBtn.forEach(element => {
+  element.onclick = closeOpen;
+});
+
 
 inputAddress[0].addEventListener('input', function () {
   checkAddresses(allAddresses ,inputAddress[0]);
-  console.log('aaaaaa')
 });
 inputAddress[1].addEventListener('input', function () {
   checkAddresses(allAddresses2 ,inputAddress[1]);
@@ -234,6 +392,13 @@ addressesWrapper[1].addEventListener('click', function (event) {
   }
 });
 
+addressesWrapper[2].addEventListener('click', function (event) {
+  const address = event.target.closest('.select__item3');
+  if (address) {
+    chooseAddress(address ,selectBtn[2]);
+  }
+});
+
 function chooseAddress(address ,selectBtn) {
   selectBtn.textContent = address.firstElementChild.textContent;
   selectBtn.nextElementSibling.classList.remove('select__wrapper--active');
@@ -245,25 +410,51 @@ document.addEventListener('click', function (event) {
   }
 })
 
-  //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  
+const certificate = document.querySelector('.certificate')
+const inputCertificate = document.getElementById('certificate');
 
+certificate.onclick = () => {
+  certificate.nextElementSibling.classList.toggle('checkout-certificate__active');
+  document.querySelector('.certificate-add').classList.toggle('certificate-add-active');
+  document.querySelector('.certificate-сancel').classList.toggle('certificate-add-active');
+}
 
+inputCertificate.oninput = function () {
+  const certificateBtn = document.querySelector('.checkout-certificate__btn')
+  this.value = this.value.replace(/[^\d ]/g, "");
+  certificateBtn.disabled = true;
+  if (this.value.length > 15) {
+    this.value = this.value.slice(0, 16);
+    certificateBtn.disabled = false;
+  }
+}
 
+const dynamicMask3 = IMask(
+  inputCertificate,
+  {
+      mask: [
+          {
+              mask: '0000-0000-0000-0000'
+          },
+          {
+              mask: /^\S*@?\S*$/
+          }
+      ]
+  });
+///////поки так, потім дороблю
 
-////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const promo = document.querySelector('.promo-add');
 const inputPromo = document.getElementById('promo');
 promo.onclick = () => {
   promo.parentElement.nextElementSibling.classList.toggle('checkout-promo__active');
 }
 
-inputPromo.oninput = checkCirillicPromo;
-inputPromo.onblur = checkBlurEror;
-
+  
 function checkCirillicPromo() {
-  console.log('ddd')
   if (!/^[a-zA-z0-9]+$/.test(this.value)) {
     this.classList.add('eror-blur');
   } else {
@@ -271,13 +462,10 @@ function checkCirillicPromo() {
   }
 };
 
+inputPromo.oninput = checkCirillicPromo;
+inputPromo.onblur = checkBlurEror;
 
-
-//////////////////////////////
-// const deliveryBtn = document.querySelector('.delivery-btn')
-// deliveryBtn.addEventListener('click', (e) => {
-//   e.preventDefault()
-// })
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 const rozetka = document.getElementById('rozetka')
@@ -285,92 +473,63 @@ const rozetka = document.getElementById('rozetka')
 rozetka.addEventListener('submit', function (e) {
   e.preventDefault();
   
-  // const formData = Object.fromEntries(new FormData(e.target).entries());
-  // console.log(formData)
-
-  let mandatoryData = {
+  const mainformData = { // збираємо обов'язкові дані з інпутів(ті що зовні)
     Прізвище : surname[0],
     Імя : name[0],
     'Мобільний телефон' : tell[0],
-    // 'Електронна пошта': email[0],
     'Прізвище отримувача': surname[1],
     'Імя отримувача' : name[1],
     'Мобільний телефон отримувача': tell[1],
   }
 
-  
-//optional data
-  const formData = {
-    Прізвище : surname[0],
-    Імя : name[0],
-    'Мобільний телефон' : tell[0],
-    // 'Електронна пошта': email[0],
-    'Прізвище отримувача': surname[1],
-    'Імя отримувача' : name[1],
-    'Мобільний телефон отримувача': tell[1],
-    // 'Електронна пошта отримувача': email[1],
-    
-    // nameRadio,
-    // inputSearch,
-    // street,
-    // house,
-    // flat,
-    // floor,
-    // elevator,
-    // checkboxFloor,
-    // inputRadioDay,
-    // paymentRadio,
-    // variantCard,
-    // promo,
+  const secondaryData = { // збираємо не обов'язкові дані з інпутів(ті що зовні)
+    'Електронна пошта': email[0],
+    'По батькові отримувача': middleName[0],
   }
+  console.log(inputPromo.value)
 
-  let formDelivery = {
-
-  }
+  let formDelivery  = {} // сюди будемо збирати обов'язкові дані з інпутів (ті що в радіокнопках)
+  let secondaryFormDelivery = {} // сюди будемо збирати не обов'язкові дані з інпутів (ті що в радіокнопках)
 
   document.getElementsByName('nameRadio').forEach(element => {
+    getDeliveryData(element);// збираємо дані ті що в радіокнопках, обов'язкові в formDelivery, необов'язкові в secondaryFormDelivery
+  });
+
+  inputRadio2.forEach(element => {
+    getPaymentData(element)
+  });
+
+  function getPaymentData (element) {
     if (element.checked) {
-      console.log(element.id)
-      switch (element.id) {
+      formDelivery['Оплата'] = element.nextElementSibling.textContent;
+    }
+  }
+
+  function getDeliveryData (element) { 
+    if (element.checked) {
+      switch (element.id) { // шукаємо по айдішніку ту радіокнопку на яку ми жмакнули,
+                          // і в залежності від того, на яку ми кнопку жмакнули, запишуться дані в наші об'єкти formDelivery / secondaryFormDelivery
         case 'inputRadio':
-          formDelivery['Самовивіз з наших магазинів'] = selectBtn[0].innerHTML;
+          formDelivery['Самовивіз з наших магазинів'] = (selectBtn[0].innerHTML != 'виберіть відповідне відділення') ? selectBtn[0].innerHTML : '';
+          document.getElementsByName('inputRadioDay2').forEach(element => {
+            if (element.checked) {
+              formDelivery['Час доставки кур’єром'] = `${element.parentElement.parentElement.firstElementChild.innerHTML} - ${element.nextElementSibling.innerHTML}`;
+              }
+          });
           break;
         
         case 'inputRadio2':
-          formDelivery['Вулиця'] = inputStreet.value;
+          formDelivery['Вулиця'] = inputStreet;
+          formDelivery['Будинок'] = inputHouse;
+          secondaryFormDelivery['Квартира'] = inputFlat;
+          secondaryFormDelivery['Поверх'] = inputFloor;
+          secondaryFormDelivery['Ліфт'] = document.querySelector('#selectElevator');
 
-          formDelivery['Будинок'] = inputHouse.value;
+          if (checkboxFloor.checked) secondaryFormDelivery['Підняти на поверх'] = checkboxFloor;
 
-          formDelivery['Квартира'] = inputFlat.value;
-
-          formDelivery['Поверх'] = inputFloor.value;
-
-          formDelivery['Ліфт'] = document.querySelector('#selectElevator').value;
-
-          if (checkboxFloor.checked) formDelivery['Підняти на поверх'] = 'Так'
           document.getElementsByName('inputRadioDay').forEach(element => {
             if (element.checked) {
-              console.log(element.id)
-              switch (element.id) {
-                case 'inputRadioDay':
-                  formDelivery['Час доставки кур’єром'] = 'завтра 11:00-21:00';
-                  break;
-                
-                case 'inputRadioDay2':
-                  formDelivery['Час доставки кур’єром'] = '30 липня 11:00-21:00';
-                  break;
-                case 'inputRadioDay3':
-                  formDelivery['Час доставки кур’єром'] = '31 липня 11:00-21:00';
-                    break;
-                  
-                case 'inputRadioDay4':
-                  formDelivery['Час доставки кур’єром'] = '1 серпня 11:00-19:00';
-                    break;
-                  
-                case 'inputRadioDay5':
-                  formDelivery['Час доставки кур’єром'] = '2 серпня 11:00-21:00';
-                  break;
-                }
+              formDelivery['Час доставки кур’єром'] = `${element.parentElement.parentElement.firstElementChild.innerHTML} - ${element.nextElementSibling.innerHTML}`;
             }
           });
           break;
@@ -380,63 +539,98 @@ rozetka.addEventListener('submit', function (e) {
           break;
         
         case 'inputRadio4':
-          formDelivery['Вулиця'] = inputStreet2.value;
-          formDelivery['Будинок'] = inputHouse2.value;
-          formDelivery['Квартира'] = inputFlat2.value;
+          formDelivery['Вулиця'] = inputStreet2;
+          formDelivery['Будинок'] = inputHouse2;
+          secondaryFormDelivery['Квартира'] = inputFlat2;
           break;
       
       }  
     }
-    
-  });
+  }
 
-  console.log(formDelivery);
   
 
-  // let a = 0
-  // for (const iterator in formData) {
-  //   if ( formData[iterator].classList.contains('eror-blur') || formData[iterator].classList.contains('invisible') ) {
-  //     a += 1;
-  //   }
-  //   if (formData[iterator].value == '' || formData[iterator].value == '+38 ') {
-  //     a += 1;
-  //     formData[iterator].classList.add('eror-blur');
-  //   }
-    
-  // }
-  // if ( a != 0) {
-  //   return;
-  // }
+  let a = 0; ///////////////
+
+  function errorСhecking( ojectWithData , iterator) {
+    if ( ojectWithData[iterator].classList?.contains('eror-blur') || ojectWithData[iterator].classList?.contains('invisible') ) {
+      a += 1;
+    }
+  }
+
+  function emptyCheck(ojectWithData , iterator ) {
+    if (ojectWithData[iterator] ==  '' || ojectWithData[iterator].value == '' || ojectWithData[iterator].value == '+38 ') {
+      a += 1;
+      ojectWithData[iterator].classList?.add('eror-blur');
+    }
+  }
+
+  function deleteEmptyData(ojectWithData , iterator ) {
+    if ( ojectWithData[iterator].value == ''){
+      delete ojectWithData[iterator];
+    }
+  }
+
+// можемо тут об'єднати дані
+  
+
+  for (const iterator in mainformData) {
+    errorСhecking(mainformData, iterator);  
+    emptyCheck(mainformData, iterator);
+  }
+  
+  for (const iterator in formDelivery) {
+    errorСhecking(formDelivery , iterator);
+    emptyCheck(formDelivery, iterator);
+  }
+
+  for (const iterator in secondaryData) {
+    errorСhecking(secondaryData, iterator);
+    deleteEmptyData(secondaryData, iterator);
+  }
+
+  for (const iterator in secondaryFormDelivery) {
+    errorСhecking(secondaryFormDelivery, iterator);
+    deleteEmptyData(secondaryFormDelivery, iterator);
+  }
 
 
+  if (a != 0) {  ////////////////// Якщо якась перевірка вище спрацювала, то до а добавлялась 1,
+    //  і тут ми робимо return, щоб перервати роботу функції
+    return;
+  }
 
-popup.classList.add('popup-active')
   document.querySelector('.popup__window').innerHTML = ''
-  for (const iterator in formData) {
-      let div = document.createElement('div');
-      div.innerHTML = `<p>${iterator} : ${formData[iterator].value}</p>`;
-      document.querySelector('.popup__window').append(div);
+
+  function addingData(ojectWithData, iterator) {
+    let p = document.createElement('p');
+
+    if (typeof ojectWithData[iterator] === 'string') {  // в мене дані по різному приходять,
+                                                       //тому потрібно зробити перевірку
+      p.innerHTML = `${iterator} : ${ojectWithData[iterator]}`;
+    } else {
+      p.innerHTML = `${iterator} : ${ojectWithData[iterator].value}`;
+    }
+
+    document.querySelector('.popup__window').append(p);
+  }
+
+  for (const iterator in mainformData) {
+    addingData(mainformData, iterator)
   }
 
   for (const iterator in formDelivery) {
-    let div = document.createElement('div');
-    div.innerHTML = `<p>${iterator} : ${formDelivery[iterator]}</p>`;
-    document.querySelector('.popup__window').append(div);
+    addingData(formDelivery, iterator)
+  }
+  
+  for (const iterator in secondaryData) {
+    addingData(secondaryData, iterator)
+  }
+  for (const iterator in secondaryFormDelivery) {
+    addingData(secondaryFormDelivery, iterator)
 }
 
-  // document.getElementsByName('nameRadio').forEach(element => {
-    // if (element.checked) {
-    //   console.dir(element)
-    //   console.dir(element.elements)
-    // }
-  // });
-
-  // for (const element of this.elements) {
-  //   if (!element.classList.contains('eror-blur') &&  element.value != '' && element.value != undefined) {
-  //     console.dir(element.value)
-  //     console.log(element)
-  //   } 
-  // }
+popup.classList.add('popup-active')
 })
 
 
@@ -456,9 +650,3 @@ document.addEventListener('click', e => {
 closePopup.onclick = () => {
   popup.classList.remove('popup-active');
 }
-
-
-
-
-
-
