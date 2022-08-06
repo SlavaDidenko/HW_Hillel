@@ -18,7 +18,6 @@ raiseFloor.forEach(el => {
 /////////////////////////////////////////////////////
 
 const inputRadio = document.querySelectorAll('.input-radio');
-console.log(inputRadio)
 inputRadio.forEach(input => {
   input.addEventListener('change', function () {
     if (this.checked) {
@@ -29,10 +28,8 @@ inputRadio.forEach(input => {
 
       const priceProduct = document.getElementById('price-product').textContent;
       let priceDelivery = document.getElementById('price-delivery');
-      console.log(this.nextElementSibling.querySelector('.delivery-price').textContent)
       priceDelivery.textContent = this.nextElementSibling.querySelector('.delivery-price').textContent;
       document.getElementById('final-price').textContent = Number(priceProduct.replace(/[^\d]/g, "")) + Number(priceDelivery.textContent.replace(/[^\d]/g, ""));
-      console.log( Number('dsfsfsdf'))
       document.getElementById('final-price').textContent = prettify(document.getElementById('final-price').textContent)
     }
   })
@@ -241,7 +238,8 @@ function checkCode() {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const  inputStreet2 = document.getElementById('inputStreet2');
+
+const inputStreet2 = document.getElementById('inputStreet2');
 const inputHouse2 = document.getElementById('inputHouse2');
 
 
@@ -257,6 +255,7 @@ inputStreet.onblur = checkBlurEror;
 inputHouse.onblur = checkBlurEror;
 ngValid.onblur = checkBlurEror;
 legalEntity.onblur = checkBlurEror;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const email = document.getElementsByName('email');
 
@@ -351,7 +350,6 @@ const selectBtn = document.querySelectorAll('.select__btn');
 function closeOpen (event) {
   event.preventDefault()
   const wrapper = this.nextElementSibling;
-  console.log(wrapper)
   wrapper.classList.toggle('select__wrapper--active');
   wrapper.querySelector('input')?.focus();
 };
@@ -443,7 +441,6 @@ const dynamicMask3 = IMask(
           }
       ]
   });
-///////поки так, потім дороблю
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -473,7 +470,7 @@ const rozetka = document.getElementById('rozetka')
 rozetka.addEventListener('submit', function (e) {
   e.preventDefault();
   
-  const mainformData = { // збираємо обов'язкові дані з інпутів(ті що зовні)
+  let mainformData = { // збираємо обов'язкові дані з інпутів
     Прізвище : surname[0],
     Імя : name[0],
     'Мобільний телефон' : tell[0],
@@ -482,17 +479,14 @@ rozetka.addEventListener('submit', function (e) {
     'Мобільний телефон отримувача': tell[1],
   }
 
-  const secondaryData = { // збираємо не обов'язкові дані з інпутів(ті що зовні)
+  let secondaryData = { // збираємо не обов'язкові дані з інпутів
     'Електронна пошта': email[0],
     'По батькові отримувача': middleName[0],
   }
-  console.log(inputPromo.value)
 
-  let formDelivery  = {} // сюди будемо збирати обов'язкові дані з інпутів (ті що в радіокнопках)
-  let secondaryFormDelivery = {} // сюди будемо збирати не обов'язкові дані з інпутів (ті що в радіокнопках)
 
   document.getElementsByName('nameRadio').forEach(element => {
-    getDeliveryData(element);// збираємо дані ті що в радіокнопках, обов'язкові в formDelivery, необов'язкові в secondaryFormDelivery
+    getDeliveryData(element);// збираємо дані ті що в радіокнопках, обов'язкові в mainformData, необов'язкові в secondaryData
   });
 
   inputRadio2.forEach(element => {
@@ -501,47 +495,47 @@ rozetka.addEventListener('submit', function (e) {
 
   function getPaymentData (element) {
     if (element.checked) {
-      formDelivery['Оплата'] = element.nextElementSibling.textContent;
+      mainformData['Оплата'] = element.nextElementSibling.textContent;
     }
   }
 
   function getDeliveryData (element) { 
     if (element.checked) {
       switch (element.id) { // шукаємо по айдішніку ту радіокнопку на яку ми жмакнули,
-                          // і в залежності від того, на яку ми кнопку жмакнули, запишуться дані в наші об'єкти formDelivery / secondaryFormDelivery
+                          // і в залежності від того, на яку ми кнопку жмакнули, запишуться дані в наші об'єкти mainformData / secondaryData
         case 'inputRadio':
-          formDelivery['Самовивіз з наших магазинів'] = (selectBtn[0].innerHTML != 'виберіть відповідне відділення') ? selectBtn[0].innerHTML : '';
+          mainformData['Самовивіз з наших магазинів'] = (selectBtn[0].innerHTML != 'виберіть відповідне відділення') ? selectBtn[0].innerHTML : '';
           document.getElementsByName('inputRadioDay2').forEach(element => {
             if (element.checked) {
-              formDelivery['Час доставки кур’єром'] = `${element.parentElement.parentElement.firstElementChild.innerHTML} - ${element.nextElementSibling.innerHTML}`;
+              mainformData['Час доставки кур’єром'] = `${element.parentElement.parentElement.firstElementChild.innerHTML} - ${element.nextElementSibling.innerHTML}`;
               }
           });
           break;
         
         case 'inputRadio2':
-          formDelivery['Вулиця'] = inputStreet;
-          formDelivery['Будинок'] = inputHouse;
-          secondaryFormDelivery['Квартира'] = inputFlat;
-          secondaryFormDelivery['Поверх'] = inputFloor;
-          secondaryFormDelivery['Ліфт'] = document.querySelector('#selectElevator');
+          mainformData['Вулиця'] = inputStreet;
+          mainformData['Будинок'] = inputHouse;
+          secondaryData['Квартира'] = inputFlat;
+          secondaryData['Поверх'] = inputFloor;
+          secondaryData['Ліфт'] = document.querySelector('#selectElevator');
 
-          if (checkboxFloor.checked) secondaryFormDelivery['Підняти на поверх'] = checkboxFloor;
+          if (checkboxFloor.checked) secondaryData['Підняти на поверх'] = checkboxFloor;
 
           document.getElementsByName('inputRadioDay').forEach(element => {
             if (element.checked) {
-              formDelivery['Час доставки кур’єром'] = `${element.parentElement.parentElement.firstElementChild.innerHTML} - ${element.nextElementSibling.innerHTML}`;
+              mainformData['Час доставки кур’єром'] = `${element.parentElement.parentElement.firstElementChild.innerHTML} - ${element.nextElementSibling.innerHTML}`;
             }
           });
           break;
         
         case 'inputRadio3':
-          formDelivery['Самовивіз з Нової Пошти'] = selectBtn[1].innerHTML;
+          mainformData['Самовивіз з Нової Пошти'] = selectBtn[1].innerHTML;
           break;
         
         case 'inputRadio4':
-          formDelivery['Вулиця'] = inputStreet2;
-          formDelivery['Будинок'] = inputHouse2;
-          secondaryFormDelivery['Квартира'] = inputFlat2;
+          mainformData['Вулиця'] = inputStreet2;
+          mainformData['Будинок'] = inputHouse2;
+          secondaryData['Квартира'] = inputFlat2;
           break;
       
       }  
@@ -571,29 +565,16 @@ rozetka.addEventListener('submit', function (e) {
     }
   }
 
-// можемо тут об'єднати дані
-  
 
   for (const iterator in mainformData) {
     errorСhecking(mainformData, iterator);  
     emptyCheck(mainformData, iterator);
-  }
-  
-  for (const iterator in formDelivery) {
-    errorСhecking(formDelivery , iterator);
-    emptyCheck(formDelivery, iterator);
   }
 
   for (const iterator in secondaryData) {
     errorСhecking(secondaryData, iterator);
     deleteEmptyData(secondaryData, iterator);
   }
-
-  for (const iterator in secondaryFormDelivery) {
-    errorСhecking(secondaryFormDelivery, iterator);
-    deleteEmptyData(secondaryFormDelivery, iterator);
-  }
-
 
   if (a != 0) {  ////////////////// Якщо якась перевірка вище спрацювала, то до а добавлялась 1,
     //  і тут ми робимо return, щоб перервати роботу функції
@@ -618,17 +599,10 @@ rozetka.addEventListener('submit', function (e) {
   for (const iterator in mainformData) {
     addingData(mainformData, iterator)
   }
-
-  for (const iterator in formDelivery) {
-    addingData(formDelivery, iterator)
-  }
   
   for (const iterator in secondaryData) {
     addingData(secondaryData, iterator)
   }
-  for (const iterator in secondaryFormDelivery) {
-    addingData(secondaryFormDelivery, iterator)
-}
 
 popup.classList.add('popup-active')
 })
@@ -639,14 +613,10 @@ popup.classList.add('popup-active')
 
 
 const popup = document.querySelector('.popup');
-const closePopup = document.querySelector('.popup__close-bth');
+
 
 document.addEventListener('click', e => {
   if ( !e.target.closest('.popup__window') && popup.className.includes('popup-active')) {
     popup.classList.remove('popup-active')
   }
 })
-
-closePopup.onclick = () => {
-  popup.classList.remove('popup-active');
-}

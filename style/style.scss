@@ -912,23 +912,6 @@ input[type=checkbox]:disabled+label {
       margin-bottom: 8px;
     }
   }
-
-  &__close-bth {
-    position: absolute;
-
-    right: 300px;
-    top: 220px;
-
-    height: 32px;
-    width: 32px;
-
-    background: url('../img/circular-button_icon.svg') no-repeat;
-    background-size: cover;
-
-    border: 0;
-    cursor: pointer;
-    
-  }
 }
 .popup-active{
   display: flex;
