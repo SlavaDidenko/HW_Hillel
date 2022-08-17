@@ -63,6 +63,9 @@ document.getElementsByTagName('form')[0].addEventListener('submit', async (e) =>
  async function createTodo(formData) {
     await fetch(request, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(formData),
     });
 }
@@ -144,6 +147,9 @@ function changeTodo(index) {
 async function redactTask(idOfChange, redactTittle) {
     await fetch(request + `/${idOfChange}`, {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(redactTittle),
     });
 }
@@ -163,6 +169,7 @@ async function checkCheckbox(index) {
     console.log(error)
   }
 }
+
 //4444444444444444444444444444444444444444444444444444444444///////////////////////////////////////////////////////////////////////////////////
 
 document.getElementsByName('filter')[0].addEventListener('input', function () {
@@ -180,6 +187,7 @@ function checkAddresses(allTitles , inputAddress) {
     }
   })
 }
+
 //555555555555555555555555555555555555555555555555555555555///////////////////////////////////////////////////////////////////////////////////
 const sortSelect = document.getElementById('sortSelect');
 
