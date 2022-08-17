@@ -19,6 +19,7 @@ async function getTodos() {
 
 function createLi(obj , index) {
   let element = document.createElement('li');
+  element.dataset.sort = index + 1
   element.innerHTML = `
   <div class="wrapper-title">
   <input id="checkbox${index + 1}" onclick="checkCheckbox(${index + 1})" class="checkbox" ${obj['completed'] == true ? 'checked' : ''} type="checkbox">
@@ -26,7 +27,7 @@ function createLi(obj , index) {
   </div>
   <div class="wrapper-btns">
     <button onclick="changeTodo(${index + 1})" id="redact${index + 1}" type="button" class="redact"></button>
-    <button id="${index + 1}" onclick="deleteTask(${index + 1})" type="button" class="delete"></button>
+    <button id="deleteTask${index + 1}" onclick="deleteTask(${index + 1})" type="button" class="delete"></button>
   </div>
   `
   return element;
@@ -73,7 +74,7 @@ async function deleteTask(index) {
     await fetch(request + `/${index}`, {
     method: 'DELETE',
     });
-    document.getElementById(`${index}`).parentElement.parentElement.remove()
+    document.getElementById(`deleteTask${index}`).parentElement.parentElement.remove()
   } catch (error) {
     console.log(error)
   }
@@ -204,7 +205,7 @@ sortSelect.addEventListener('change', function () {
       break;
     
     default:
-      const arrDefault = [...document.querySelectorAll('li')].sort((a, b) => a.querySelector('.delete').id - b.querySelector('.delete').id);
+      const arrDefault = [...document.querySelectorAll('li')].sort((a, b) => a.dataset.sort - b.dataset.sort);
       document.querySelector('ul').innerHTML = '';
       arrDefault.forEach(el => {
         document.querySelector('ul').append(el)
