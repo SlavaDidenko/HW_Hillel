@@ -7,128 +7,72 @@
 
 .wrapper{
   padding: 50px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-
 
 body {
   background-color: #fff;
   height: 100%;
-  font-size: 18px;
-  background-color: bisque;
+  font-size: 30px;
+  background-color: #000;
+  color: #fff;
 }
 
-form{
-  max-width: 700px;
-  margin: 0 auto;
+h1 {
+  margin: 0;
+  padding: 0;
 }
 
-label{
-  display: block;
-  margin-bottom: 15px;
-}
-
-input{
-  padding: 0 15px;
-  min-height: 30px;
-  border-radius: 4px;
-  border: 1px solid rgb(86, 86, 89);
-}
-
-button{
-  min-height: 30px;
-  padding:  0 20px;
-  cursor: pointer;
-}
-
-
-li{
-  margin-bottom: 30px;
-  list-style-type: none;
+.weather {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  &__wrapper {
+    padding: 20px 40px;
+  }
+
+  &__temp{
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  &__city {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  &__humidity {
+    margin-bottom: 20px;
+  }
+
+  &__pressure {
+    margin-bottom: 20px;
+  }
+  
+  &__speed {
+    margin-bottom: 20px;
+  }
+
+  &__feels-like {
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    margin-bottom: 20px;
+  }
+
+  &__img{
+    display: block;
+    margin:0 auto 50px;
+  }
 }
-
-.checkbox{
-  margin-right: 30px;
-  height: 30px;
-  width: 30px;
+.date {
+  margin-bottom: 20px;
 }
-
-.title-complated{
-  text-decoration: line-through;
-  opacity: 0.8;
+.time {
+  margin-bottom: 20px;
+  font-size: 50px;
 }
-
-.delete{
-  height: 40px;
-  width: 40px;
-  border: none;
-  background: url(../Img/delete.svg) no-repeat center;
-  margin-left: 20px;
-}
-
-.wrapper-btns{
-  padding-left: 30px;
-  display: flex;
-}
-
-.wrapper-title{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  overflow: hidden;
-}
-
-.title-input{
-  border: 0;
-  width: 100%;
-}
-
-.title-input:focus{
-  outline: none;
-}
-
-.input-title{
-  color: black;
-  font-size: 13px;
-  text-decoration: none;
-} 
-
- .redact{
-  background: url('../Img/pencil-striped-symbol-for-interface-edit-buttons_icon-icons.com_56782.svg') no-repeat center;
-  background-size: cover;
-  height: 40px;
-  width: 40px;
-  border: 0;
- }
-
- .none {
-  display: none;
- }
-
- .title{
-  width: 100%;
- }
-
- #sortSelect {
-  padding: 0 15px;
-  min-height: 30px;
-  border-radius: 4px;
-  border: 1px solid rgb(86, 86, 89);
- }
-
- .wrapper-elements{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
- }
-
- .save-btn {
-  margin-left: 20px;
- }
