@@ -132,6 +132,10 @@ function changeTodo(index) {
     }
 
     try {
+      if (redactTittle.title.replace(/\s/g, "") == "") { // в інпут ввів пусту строку - видаляємо
+        deleteTask(index);
+        return;
+      }
       await redactTask(index, redactTittle)
       this.closest('li').querySelector('.checkbox').checked = redactTittle.completed
       taskTitle.innerHTML = redactTittle.title;
