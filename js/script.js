@@ -10,9 +10,7 @@ async function getInfo() {
   try {
     const resultReq = await infoReqest(request);
     let now = new Date();
-    let { name, main: { temp, pressure, humidity , feels_like }, weather: [{ description , icon }], wind: { speed, deg } } = resultReq;
-    console.log(resultReq)
-    console.log(name, temp, pressure, description, humidity, speed, deg ,icon ,feels_like);
+    let { name, main: { temp, pressure, humidity, feels_like }, weather: [{ description, icon }], wind: { speed, deg } } = resultReq;
     const month = now.toLocaleString('eng', { month: 'short' });
     const date = now.getDate();
     const year = now.getFullYear();
