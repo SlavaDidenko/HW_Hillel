@@ -9,16 +9,21 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-    <form name="form">
-        <label for="title">title</label>
-        <input type="text" name="title" id="title">
-        <label for="body">body</label>
-        <input type="text" name="body" id="body">
-        <label for="userId">userId</label>
-        <input type="number" name="userId" id="userId">
-        <button type="submit">Create post</button>
-      </form>
-      <ul></ul>
+    <div class="wrapper">
+        <form name="form">
+            <div class="wrapper-elements">
+                <input placeholder="Фільтрація" type="text" name="filter">
+                <select name="sortSelect" id="sortSelect"> 
+                    <option value="За замовчуванням">За замовчуванням</option>
+                    <option value="Спочатку активні">Спочатку активні</option>
+                    <option value="Спочатку виконані">Спочатку виконані</option>
+                </select>
+            </div>
+            <ul></ul>
+            <input placeholder="Нова задача" type="text" name="title" id="title">
+            <button type="submit">Додати</button>
+        </form>
+    </div>
     <script type="text/javascript" src="./js/script.js"></script>
 </body>
 </html>
