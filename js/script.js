@@ -1,44 +1,174 @@
-const request = 'http://api.openweathermap.org/data/2.5/weather?q=LVIV&units=metric&APPID=5d066958a60d315387d9492393935c19';
+class Stack {
+  constructor() {
+    this.size = 0;
+    this.storage = [];
+  }
 
-async function infoReqest(request) {
-  const response = await fetch(request);
-  const getInfo = await response.json();
-  return getInfo;
-} 
+  push(data) {
+    this.storage.push(data);
+    this.size += 1;
+    return this;
+  }
 
-async function getInfo() {
-  try {
-    const resultReq = await infoReqest(request);
-    let now = new Date();
-    let { name, main: { temp, pressure, humidity, feels_like }, weather: [{ description, icon }], wind: { speed, deg } } = resultReq;
-    const month = now.toLocaleString('eng', { month: 'short' });
-    const date = now.getDate();
-    const year = now.getFullYear();
-    const weekday = now.toLocaleString('eng', { weekday: 'short' })
-    document.querySelector('.weather').innerHTML = `
-    <div class="weather__wrapper">
-                <h1 class="weather__city">${name}</h1>
-                <div class="date">${month} ${date}, ${year} - ${weekday}</div>
-                <div class="time">${now.toLocaleString('eng', { timeStyle: 'short' })}</div>
-                <p class="weather__humidity">Humidity: ${humidity}%</p>
-                <p class="weather__pressure">Pressure: ${pressure} hPA</p>
-                <p class="weather__speed">Wind: ${Math.round(speed)} km/h</p>
-                <p class="weather__direction">Direction: ${deg}°</p>
-            </div>
-            <div class="weather__wrapper">
-                <img height="100" width="100" class="weather__img" src="http://openweathermap.org/img/w/${icon}.png" alt="weather">
-                <p class="weather__temp">${Math.round(temp)}°C</p>
-                <p class="weather__feels-like">Feels Like: ${Math.round(feels_like)} °C</p>
-                <p class="weather__description">${description.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()})}</p>
-            </div>`
-  } catch (error) {
-    document.querySelector('.weather').innerHTML = `Try later!`;
-    console.log(error)
+  top() {
+    return this.storage[this.size - 1]
+  }
+
+  pop() {
+    if (!this.size) {
+      return new Error ('Стек пустий')
+    }
+    this.storage.pop();
+    this.size -= 1;
+    return this;
+  }
+
+  empty() {
+    return this.size == 0;
+  }
+}
+const stack = new Stack();
+
+stack.push('a');
+stack.push('b');
+stack.push('c');
+console.log(stack.top());
+console.log(stack.pop())
+console.log(stack.empty())
+
+
+
+
+
+class LinkedListNode {
+  constructor(value, next = null) {
+    this.value = value;
+    this.next = next;
   }
 }
 
-getInfo();
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
 
-setInterval(() => { // не знаю на скільки це правильно, але в нас же всі дані динамічні
-  getInfo();
-}, 5000);
+  prepend(value) {
+    const newNode = new LinkedListNode(value, this.head);
+
+    this.head = newNode;
+
+    if (!this.tail) {
+      this.tail = newNode;
+    }
+  
+    return this;
+  }
+
+  append(value) {
+    const newNode = new LinkedListNode(value);
+  
+    if (!this.head || !this.tail) {
+      this.head = newNode;
+      this.tail = newNode;
+  
+      return this;
+    }
+
+    this.tail.next = newNode;
+    this.tail = newNode;
+  
+    return this;
+  }
+
+  delete(value) {
+    if (!this.head) {
+      return null;
+    }
+  
+    while (this.head && this.head.value === value) {
+      this.head = this.head.next;
+    }
+  
+    let currentNode = this.head;
+  
+    if (currentNode !== null) {
+      while (currentNode.next) {
+        if (currentNode.next.value === value) {
+          currentNode.next = currentNode.next.next;
+        } else {
+          currentNode = currentNode.next;
+        }
+      }
+    }
+  
+    if (this.tail && this.tail.value === value) {
+      this.tail = currentNode;
+    }
+    return this;
+  }
+
+  find(value) {
+    if (!this.head) {
+      return null;
+    }
+    let currentNode = this.head;
+  
+    while (currentNode) {
+      if (value !== undefined && currentNode.value === value) {
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+    }
+    return null;
+  }
+
+  deleteFromTail() {
+    if (!this.tail) {
+      return null;
+    }
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+  
+      return this;
+    }
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (!currentNode.next.next) {
+        currentNode.next = null;
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+    this.tail = currentNode;
+  
+    return this;
+  }
+
+
+  deleteFromHead() {
+    if (!this.head) {
+      return null;
+    }
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
+      this.head = null;
+      this.tail = null;
+    }
+    return this;
+  }
+}
+
+const linkedList = new LinkedList();
+
+linkedList.prepend('a');
+linkedList.prepend('a');
+linkedList.append('c')
+linkedList.prepend('b');
+console.log(linkedList.find('a'))
+linkedList.deleteFromTail();
+linkedList.deleteFromHead()
+linkedList.delete('a')
+console.log(linkedList)
