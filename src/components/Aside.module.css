@@ -1,0 +1,78 @@
+.aside {
+  padding: 50px 45px 60px;
+  max-width: 270px;
+  border-right: 1px solid #6D8093;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .aside {
+    display: none;
+  }
+}
+
+.img {
+  margin-bottom: 30px;
+}
+
+.nameJob {
+  margin-bottom: 30px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  background: linear-gradient(101.83deg, #5671A6 14.93%, #B2CAD8 58.66%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 3px;
+}
+
+.position {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #383838;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #616161;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contactIcons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.contacItem {
+  padding: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #5671A6;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #6d87bc;
+}

@@ -1,0 +1,39 @@
+.card {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 47px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 30px;
+  }
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.textWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #383838;
+  max-width: 100px;
+}
+
+.number {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 56px;
+  color: #383838;
+}

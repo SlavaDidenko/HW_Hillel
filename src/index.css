@@ -1,0 +1,91 @@
+* {
+  padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+	outline: none;
+}
+a:focus,
+a:active {
+	outline: none;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+  overflow-anchor: none;
+  background: #141416;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  background:  url(./img/132506b7dfdd6884efb5d11b548183d4.jfif) top;
+  background-size: cover;
+}
+
+main {
+  display: flex;
+  align-items: flex-start;
+  height: calc(100vh - 76px);
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+button {
+	cursor: pointer;
+	color: inherit;
+	background-color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+.btn-reset {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1180px;
+}
