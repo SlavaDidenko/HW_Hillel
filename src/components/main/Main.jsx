@@ -14,16 +14,14 @@ export default function Main () {
         <Section className={style.about} title="About" text="Web developer, with extensive knowledge and years of experience, working in web technologies and UI/UX design, delivering quality work.">
           <ul className={style.cardList}>
             {cardData.map((el, index) => {
-              const { text, img, number } = el;
-                return < CardAbout key={index} text={text} img={img} number={number} />
+                return < CardAbout key={index} props={el} />
             })}
           </ul>
         </Section>
         <Section title="Qualification" text="My personal journey">
           <ul className={style.qualificationList}>
             {cardQualificationData.map((el, index) => {
-              const { text, location, data } = el;
-                return < QualificationCard key={index} title={text} location={location} data={data} />
+              return < QualificationCard key={index} props={el} />
             })}
           </ul>
         </Section>

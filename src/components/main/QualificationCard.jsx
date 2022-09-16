@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./QualificationCard.module.css"
 
-export default function QualificationCard({ title, location, data }) {
+export default function QualificationCard({ props }) {
+  const { title, location, data } = props;
   return (
     <li className={style.card}>
       <h3 className={style.title}>{title}</h3>

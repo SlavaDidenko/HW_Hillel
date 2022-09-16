@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./CardAbout.module.css";
 
-export default function CardAbout({ text, img, number }) {
-  console.log(text)
+export default function CardAbout({ props }) {
+  const {text, img, number} = props
   return (
     <li className={style.card}>
       <div className={style.img}>
