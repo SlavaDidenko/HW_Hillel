@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <main class="page">
+        <div class="counter">
+          <div class="counter__wrapper-title">
+            <h2 class="counter__main-title">Доступна сума покупок по сервісу "Оплата частинами"</h2>
+          </div>
+          <form name="counterForm" class="counter__form">
+            <input class="counter__input" placeholder="+380" type="text">
+            <p class="counter__error">Номер телефону введений невірно, або не заповнений</p>
+            <button class="counter__btn" type="submit">Дізнатися ліміт</button>
+          </form>
+        </div>
+        <div class="hidden">
+          <div class="result">
+            <div class="result__card">
+              <h3 class="result__title">Оплата частинами</h3>
+              <div class="result__card-wrapper">
+                <p class="result__summ-title">Сумма платежу</p>
+                <p id="partsPrice" class="result__summ">Number</p>
+                <p class="result__text">грн / міс</p>
+              </div>
+            </div>
+            <div class="result__card">
+              <h3 class="result__title">Миттєва розстрочка</h3>
+              <div class="result__card-wrapper">
+                <p class="result__summ-title">Сумма платежу</p>
+                <p id="instantPrice" class="result__summ">Number</p>
+                <p class="result__text">грн / міс</p>
+              </div>
+            </div>
+          </div>
+            <div class="term">
+              <div class="term__wrapper">
+                <div>
+                  <h3>Строк кредитування</h3>
+                  <div>
+                    <input  id="inputTerm" value="0" class="term__input" type="number">
+                    <span>Місяців</span>
+                  </div>
+                </div>
+                <input min="5" max="20" id="rangeTerm" step="1" type="range">
+              </div>
+            </div>
+            <div class="price">
+              <div class="price__wrapper">
+                <div>
+                  <h3>Вартість товару</h3>
+                  <div>
+                    <input id="inputPrice" value="0" class="term__input" type="number">
+                    <span>Гривень</span>
+                  </div>
+                </div>
+                <input min="300" max="" step="1" id="rangePrice" type="range">
+              </div>
+            </div>
+          </div>
+
+      </main>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

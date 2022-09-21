@@ -1,0 +1,71 @@
+.counter {
+  max-width: 500px;
+  background-color: gray;
+  text-align: center;
+}
+.counter__wrapper-title {
+  background-color: orange;
+  padding: 20px;
+}
+.counter__main-title {
+  width: 300px;
+  margin: 0 auto;
+  color: ghostwhite;
+  font-size: 22px;
+}
+.counter__input {
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.counter__error {
+  font-size: 14px;
+  color: red;
+  margin-bottom: 30px;
+  visibility: hidden;
+  opacity: 0;
+}
+.counter__btn {
+  padding: 10px 15px;
+  background-color: green;
+  color: #fff;
+}
+.counter__form {
+  padding: 30px;
+}
+
+.result {
+  display: flex;
+}
+.result__card {
+  text-align: center;
+  margin-right: 40px;
+}
+.result__title {
+  margin-bottom: 20px;
+}
+.result__card-wrapper {
+  padding: 20px 5px;
+}
+.result__summ-title {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.result__summ {
+  background-color: green;
+  padding: 15px 0;
+  margin: 0 15px;
+  border-radius: 5px;
+}
+.result__text {
+  font-size: 20px;
+}
+
+.term__wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+.price__wrapper {
+  display: flex;
+  align-items: flex-end;
+}/*# sourceMappingURL=style.css.map */

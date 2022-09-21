@@ -1,0 +1,29 @@
+.main{
+    width: 750px;
+    margin: 25px auto;
+}
+
+form,
+.result-holder {
+    display: flex;
+    flex-flow: row;
+}
+.form-element,
+.result-element {
+    padding: 8px;
+}
+
+input,
+select {
+    border: 1px solid #000;
+    padding: 8px;
+}
+button {
+    border: 1px solid #000;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.result-holder {
+    margin: 20px 0 0 0;
+}
