@@ -10,8 +10,12 @@ export const App = () => {
 
   useEffect(() => {
     async function getContacts() {
-      const data = await Contacts.getContacts();
-      setContacts(data);
+      try {
+        const data = await Contacts.getContacts();
+        setContacts(data);
+      } catch (error) {
+        console.log(error)
+      }
     }
     getContacts();
   }, []);
