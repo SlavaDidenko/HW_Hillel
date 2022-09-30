@@ -1,12 +1,11 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Th from './th/Th';
 import Td from './td/Td';
 import ButtonDel from 'components/UI/button/ButtonDel';
-import {ContactsContext} from '../../components/App'
+import { ContactsContext } from '../../components/App';
 const Table = () => {
   const thArr = ['Номер', "Ім'я", 'Прізвище', 'Телефон'];
   const contacts = useContext(ContactsContext);
-  console.log(contacts.contacts)
 
   const deleteContact = id => {
     contacts.setContacts(contacts.contacts.filter(el => el.id !== id));
