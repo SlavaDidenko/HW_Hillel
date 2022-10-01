@@ -33,7 +33,6 @@ const AddContactForm = () => {
         phone: tell.value,
         id: new Date(),
       };
-      console.log(newContact.id)
       contacts.setContacts([...contacts.contacts, newContact]);
       removeValue();
     }
