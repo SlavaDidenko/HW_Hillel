@@ -31,8 +31,9 @@ const AddContactForm = () => {
       const newContact = {
         name: `${name.value} ${surname.value}`,
         phone: tell.value,
-        id: contacts.contacts.length + 1,
+        id: new Date(),
       };
+      console.log(newContact.id)
       contacts.setContacts([...contacts.contacts, newContact]);
       removeValue();
     }

@@ -25,7 +25,7 @@ const Table = () => {
           {contacts.contacts.length ? (
             contacts.contacts.map((el, index) => {
               return (
-                <tr key={index + 1} className="bg-purple-600 text-rose-50">
+                <tr key={el.id} className="bg-purple-600 text-rose-50">
                   <Td value={index + 1} />
                   <Td value={el.name.split(' ')[0]} />
                   <Td value={el.name.split(' ')[1]} />
