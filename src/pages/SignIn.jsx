@@ -27,7 +27,7 @@ const SignIn = () => {
           {...register('login', {
             minLength: {
               value: 5,
-              message: 'Логін містить більше 5 символів',
+              message: 'Login contains more than 5 characters',
             },
             pattern: /^[A-Za-z]+$/i,
             required: true,
@@ -36,7 +36,7 @@ const SignIn = () => {
         <div className="sign-err">
           {errors.login && (
             <p className="error">
-              {errors.login.message || 'Не правильно введений логін'}
+              {errors.login.message || 'Incorrectly entered login'}
             </p>
           )}
         </div>
@@ -46,7 +46,7 @@ const SignIn = () => {
           {...register('password', {
             minLength: {
               value: 8,
-              message: 'Пароль містить більше 8 символів',
+              message: 'Password contains more than 8 characters',
             },
             max: 99,
             required: true,
@@ -55,7 +55,7 @@ const SignIn = () => {
         <div className="sign-err">
           {errors.password && (
             <p className="error">
-              {errors.password.message || 'Не правильно введений пароль'}
+              {errors.password.message || 'The password is not entered correctly'}
             </p>
           )}
         </div>
