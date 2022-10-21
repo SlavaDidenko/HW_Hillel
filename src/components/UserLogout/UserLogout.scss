@@ -1,0 +1,50 @@
+.logout-wrapper {
+  position: relative;
+}
+
+.wrapper__logout-btn {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background-color: rgb(65, 63, 63);
+  border-radius: 12px;
+  padding: 10px 12px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: brown;
+  padding: 10px 12px;
+  border-radius: 26px;
+  transition: all 0.3s ease;
+  width: 200px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(179, 43, 43);
+  }
+}
+
+.close {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.userlogout-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
